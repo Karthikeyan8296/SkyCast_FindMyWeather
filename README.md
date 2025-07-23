@@ -1,7 +1,9 @@
 <img width="1886" height="1016" alt="image" src="https://github.com/user-attachments/assets/8d1c15d8-7095-4f8b-b5b0-69a60978df40" />
 <img width="1911" height="1012" alt="image" src="https://github.com/user-attachments/assets/3e2c62bd-31b2-4ba2-b4a4-f1be1264971f" />
 
+<h3>Home</h3>
 
+```
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../styles/App.css";
@@ -49,8 +51,11 @@ function Home() {
 
 
 export default Home;
+```
 
+<h3>Weather</h3>
 
+```
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -65,14 +70,11 @@ function Weather() {
   const city = localStorage.getItem("city");
   const navigate = useNavigate();
 
-
   useEffect(() => {
     if (!city) {
       navigate("/");
       return;
     }
-
-
     const res = axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
@@ -94,12 +96,9 @@ function Weather() {
     return (weatherData.main.temp * 9) / 5 + 32;
   }, [weatherData]);
 
-
   if (loading) return <p>Loading weather data...</p>;
 
-
   if (!weatherData) return <p>Failed to fetch weather data.</p>;
-
 
   return (
     <div className="card">
@@ -116,8 +115,11 @@ function Weather() {
 
 
 export default Weather;
+```
 
+<h3>App</h3>
 
+```
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Weather from "./pages/Weather";
@@ -139,8 +141,11 @@ function App() {
 
 
 export default App;
+```
 
+<h3>App.css</h3>
 
+```
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -196,7 +201,6 @@ button {
   cursor: pointer;
 }
 
-
 button:hover {
   background: #0077b6;
 }
@@ -206,3 +210,4 @@ button:hover {
   color: red;
   margin-top: 0.5rem;
 }
+```
